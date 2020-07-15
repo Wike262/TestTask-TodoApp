@@ -4,8 +4,8 @@ import { deleteGroup } from "../actions";
 import GroupControls from "../components/GroupControls";
 
 const getGroup = (state, id) => {
- return state.groups.find((item, index) =>
-  item.id === id
+ return state.groups.filter((item, index) =>
+  item.id === id ? index : item
  )
 }
 
