@@ -20,11 +20,7 @@ const getVisibleTasks = (tasks, filter) => {
 }
 
 const getTasks = (state, id) => {
- let tasks
- state.groups.map((item, index) => {
-  if (item.id === id) tasks = item.tasks
- })
- return tasks
+ return state.groups.find((item) => item.id === id).tasks
 }
 
 const mapStateToProps = (state, ownProp) => ({ tasks: getVisibleTasks(getTasks(state, ownProp.groupId), state.visibilityFilter), groupId: ownProp.groupId });

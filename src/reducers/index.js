@@ -91,24 +91,14 @@ function groups(state = [], action) {
   case "EDIT_GROUP":
    return editGroup(state, action)
   case "DELETE_GROUP":
-   let indexItem
-   state.map((item, index) => {
-    if (item.id === action.id) {
-     indexItem = index
-    }
-   })
+   let indexItem = state.findIndes((item) => item.id === action.id)
    return deleteGroup(state, action, indexItem)
   case "ADD_TASK":
   case "TOGGLE_TASK":
   case "EDIT_TASK":
   case "DELETE_TASK":
    updatedGroup = state.map((item) => {
-    let indexItem
-    item.tasks.map((item, index) => {
-     if (item.id === action.id) {
-      indexItem = index
-     }
-    })
+    let indexItem = item.tasks.findIndex((item) => item.id === action.id)
     return item.id === action.groupId ? { ...item, tasks: tasksReducer(item.tasks, action, indexItem) } : item
    })
    return updatedGroup;

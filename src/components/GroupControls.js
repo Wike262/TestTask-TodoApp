@@ -6,7 +6,6 @@ import { Button } from "reactstrap";
 import { withRouter } from "react-router-dom";
 
 const GroupControl = ({ editGroup, deleteGroup, group, history }) => {
- console.log(group)
  return (
   <div className="Tasks-Group">
    <h1 className="Tasks-GroupName">{`Group: ${group.text}`}</h1>
