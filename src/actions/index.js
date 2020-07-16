@@ -44,6 +44,27 @@ export const deleteGroup = (id) => ({
  id,
 });
 
+export const reorderGroup = (id, index) => ({
+ type: "REORDER_GROUP",
+ id,
+ index,
+})
+
+export const reorderTask = (id, index, groupId) => ({
+ type: "REORDER_TASK",
+ id,
+ index,
+ groupId,
+})
+
+export const moveTask = (id, index, groupId, newGroupId) => ({
+ type: "MOVE_TASK",
+ id,
+ index,
+ groupId,
+ newGroupId,
+})
+
 export const setVisibilityFilter = filter => ({
  type: 'SET_VISIBILITY_FILTER',
  filter

@@ -1,22 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaAngleRight } from "react-icons/fa";
+import GroupControls from '../containers/GroupControl'
+import AddTask from '../containers/AddTask'
+import TasksList from '../containers/VisibleTaskList'
 
-const Group = ({ groups }) => {
- let group = groups.groups
+const Group = ({ index, id, ...props }) => {
+ console.log(id)
  return (
-  <ul className="Group-List">
-   {group.map((item) => {
-    return (
-     <li key={item.id} className="Group-Item">
-      <Link to={{ pathname: `/${item.id}`, state: { groupId: item.id, groupName: item.text } }}  >
-       {item.text} <FaAngleRight />
-      </Link>
-     </li>
-    )
-   })
-   }
-  </ul>)
-}
+  <div key={index} className="Group">
+   <GroupControls groupId={id} />
+   <AddTask groupId={id} />
+   <TasksList groupId={id} groupIndex={index} />
+  </div>
+ )
+};
 
 export default Group;

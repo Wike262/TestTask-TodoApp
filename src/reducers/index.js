@@ -46,6 +46,15 @@ function deleteTask(tasksState, action, index) {
  return [...tasksState.slice(0, index), ...tasksState.slice(index + 1)]
 }
 
+function reorderTask(tasksState, action) {
+ let movedTask = tasksState.slice();
+ let handler = movedTask[action.id]
+ movedTask[action.id] = movedTask[action.index]
+ movedTask[action.index] = handler
+ return movedTask
+}
+
+
 function addGroup(groupState, action) {
  const newGroup = {
   tasks: tasksReducer(groupState.tasks, action),
@@ -64,8 +73,15 @@ function editGroup(groupState, action) {
 }
 
 function deleteGroup(tasksState, action, index) {
- console.log(tasksState)
  return [...tasksState.slice(0, index), ...tasksState.slice(index + 1)]
+}
+
+function reorderGroup(groupState, action) {
+ let movedGroup = groupState.slice();
+ let handler = movedGroup[action.id]
+ movedGroup[action.id] = movedGroup[action.index]
+ movedGroup[action.index] = handler
+ return movedGroup
 }
 
 function tasksReducer(tasksState = [], action, index) {
@@ -78,30 +94,42 @@ function tasksReducer(tasksState = [], action, index) {
    return editTask(tasksState, action);
   case "DELETE_TASK":
    return deleteTask(tasksState, action, index);
+  case "REORDER_TASK":
+   return reorderTask(tasksState, action)
   default:
    return tasksState;
  }
 }
 
 function groups(state = [], action) {
- let updatedGroup
  switch (action.type) {
   case "ADD_GROUP":
    return [...state, addGroup(state, action)];
   case "EDIT_GROUP":
    return editGroup(state, action)
   case "DELETE_GROUP":
-   let indexItem = state.findIndes((item) => item.id === action.id)
+   let indexItem = state.findIndex((item) => item.id === action.id)
    return deleteGroup(state, action, indexItem)
+  case "REORDER_GROUP":
+   return reorderGroup(state, action)
   case "ADD_TASK":
   case "TOGGLE_TASK":
   case "EDIT_TASK":
   case "DELETE_TASK":
-   updatedGroup = state.map((item) => {
+  case "REORDER_TASK":
+   return state.map((item) => {
     let indexItem = item.tasks.findIndex((item) => item.id === action.id)
     return item.id === action.groupId ? { ...item, tasks: tasksReducer(item.tasks, action, indexItem) } : item
    })
-   return updatedGroup;
+  case "MOVE_TASK":
+   let updatedState = state.slice()
+   let handler = updatedState[action.groupId].tasks[action.id]
+   console.log(action)
+
+   updatedState[action.groupId].tasks = deleteTask(updatedState[action.groupId].tasks, action, action.id)
+   updatedState[action.newGroupId].tasks[action.index] = handler
+   return updatedState
+
   default:
    return state;
  }

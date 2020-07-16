@@ -1,12 +1,12 @@
 import React from "react";
 import AddGroup from "../containers/AddGroup";
-import VisibleGroup from "../containers/VisibleGroup";
+import VisibleGroups from "../containers/VisibleGroups";
 
 export default () => {
  return (
-  <>
+  <div className="Group-Container">
+   <VisibleGroups />
    <AddGroup />
-   <VisibleGroup />
-  </>
+  </div>
  )
 };

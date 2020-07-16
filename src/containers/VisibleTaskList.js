@@ -6,7 +6,6 @@ import TaskList from "../components/TaskList";
 import { VisibilityFilters } from '../actions'
 
 const getVisibleTasks = (tasks, filter) => {
- console.log(tasks)
  switch (filter) {
   case VisibilityFilters.SHOW_ALL:
    return tasks
@@ -23,7 +22,7 @@ const getTasks = (state, id) => {
  return state.groups.find((item) => item.id === id).tasks
 }
 
-const mapStateToProps = (state, ownProp) => ({ tasks: getVisibleTasks(getTasks(state, ownProp.groupId), state.visibilityFilter), groupId: ownProp.groupId });
+const mapStateToProps = (state, ownProp) => ({ tasks: getVisibleTasks(getTasks(state, ownProp.groupId), state.visibilityFilter), groupId: ownProp.groupId, groupIndex: ownProp.groupIndex });
 
 const mapDispatchToProps = (dispatch) => ({
  toggleTask: (id, groupId) => dispatch(toggleTask(id, groupId)),

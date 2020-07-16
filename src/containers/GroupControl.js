@@ -3,11 +3,7 @@ import { editGroup } from "../actions";
 import { deleteGroup } from "../actions";
 import GroupControls from "../components/GroupControls";
 
-const getGroup = (state, id) => {
- return state.groups.find((item, index) =>
-  item.id === id
- )
-}
+const getGroup = (state, id) => state.groups.find((item) => item.id === id)
 
 const mapStateToProps = (state, ownProp) => ({ group: getGroup(state, ownProp.groupId) });
 

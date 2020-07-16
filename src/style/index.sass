@@ -31,39 +31,53 @@
  display: flex
  justify-content: center
  min-height: 100%
- margin-top: 250px
+ margin-top: 100px
 form
  max-width: 325px
  display: flex
  justify-content: space-between
  align-items: center
  margin: 15px 0
- .Input
-  border-radius: 5px
-  outline: none
-  border: 2px solid #cccccc
-  transition: all .3s ease
-  font-size: 18px
-  width: 200px
-  height: 45px
-  padding: 10px
-  &:focus
-   border-bottom: 2px solid #000000
- .Button
-  padding: 15px
-  width: fit-content
-  height: 45px
-  margin-left: 25px
-.Butto
-.Group
- list-style-type: none
+.Input
+ border-radius: 5px
+ outline: none
+ border: 2px solid #cccccc
+ transition: all .3s ease
+ font-size: 18px
+ width: 170px
+ height: 45px
+ padding: 10px
+ margin: 5px
+ &-Task
+  width: 100px
+ &:focus
+  border-bottom: 2px solid #000000
+.Button
  padding: 15px
- width: 100%
+ width: fit-content
+ height: 45px
+ margin-left: 25px
+
+.Group
+ background: rgba(23, 162, 184, .3)
+ border-radius: 5px
+ height: 600px
+ width: 340px
+ justify-content: center
+ align-items: center
+ overflow: hidden
+ margin: 0 25px
+ padding: 15px
+ flex-shrink: 0
+ &-Add
+  margin: 24px
+ &-Name
+  font-size: 30px
  &-Container
-  background: rgba(23, 162, 184, .3)
-  border-radius: 5px
-  height: 500px
-  overflow-y: scroll
+  display: flex
+  list-style-type: none
+  overflow-x: scroll
+  overflow-y: hidden
  &-List
   margin: 0
   padding: 0
@@ -79,6 +93,16 @@ form
    align-items: center
    justify-content: space-between
    transition: all .3 ease
+ &-Controls
+  display: flex
+  justify-content: space-between
+  align-items: center
+  &-ButtonsWrapper
+   display: flex
+   flex-wrap: wrap
+   align-items: center
+   .btn
+    margin: 0 5px
 
 .Tasks
  padding: 15px
@@ -91,8 +115,6 @@ form
   max-height: 500px
   overflow-y: scroll
   overflow-x: hidden
- &-GroupName
-  margin-left: 25px
  &-Item
   display: flex
   justify-content: space-between
@@ -104,13 +126,12 @@ form
    background: rgba(108, 117, 125,.3 )
   &-ButtonsWrapper
    display: flex
+   flex-wrap: wrap
+   align-items: center
+   p
+    margin: 0
    .btn
-    margin: 0 15px
- &-Group
-  display: flex
-  justify-content: space-between
-  align-items: center
-  width: 530px
+    margin: 0 5px
 
 .GoBackLink
  a
@@ -133,3 +154,7 @@ form
   background: rgba(108, 117, 125,1 )
   .btn
    width: fit-content
+
+ul
+ margin: 0
+ padding: 0

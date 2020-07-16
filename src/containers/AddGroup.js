@@ -7,7 +7,7 @@ const AddGroup = ({ dispatch }) => {
  let input;
 
  return (
-  <div>
+  <div className="Group Group-Add">
    <form
     onSubmit={(e) => {
      e.preventDefault();
