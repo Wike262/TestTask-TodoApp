@@ -11,6 +11,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/index.sass";
 
 const store = createStore(rootReducer);
+const unsubscribe = store.subscribe(() => console.log(store.getState()))
+
 
 function onDragEnd(result) {
  console.log(result)

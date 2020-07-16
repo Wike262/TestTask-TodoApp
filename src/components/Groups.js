@@ -25,7 +25,7 @@ const Groups = ({ groups }) => {
      {
       groups.map((item, index) => {
        return (
-        <Draggable key={index} draggableId={`Group-${index}`} index={index} >
+        <Draggable key={item.id} draggableId={`Group-${index}`} index={index} >
          {(provided, snapshot) => (
           <div
            ref={provided.innerRef}

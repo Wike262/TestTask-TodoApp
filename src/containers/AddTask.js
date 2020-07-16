@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { addTask } from "../actions";
 import { Button } from 'reactstrap';
 
 const AddTask = ({ dispatch, groupId }) => {
- let input
+ let input = useRef(null)
  return (
   <div>
    <form

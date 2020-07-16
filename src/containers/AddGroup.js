@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { addGroup } from "../actions";
 import { Button } from 'reactstrap';
 
 const AddGroup = ({ dispatch }) => {
- let input;
+ let input = useRef(null);
 
  return (
   <div className="Group Group-Add">

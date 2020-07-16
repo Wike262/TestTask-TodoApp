@@ -5,7 +5,21 @@ import { FaTrash } from "react-icons/fa";
 import { Button } from "reactstrap";
 
 
-const Task = ({ onToggle, onEdit, onDelete, completed, text, id, index }) => {
+const Task = ({ onToggle, onEdit, onDelete, completed, text, id }) => {
+
+ const submitEdit = () => {
+  onEdit();
+  document.getElementsByClassName(`Task-Text-${id}${text}`)[0].style.display = "block";
+  document.getElementById(id).style.display = "none";
+  document.getElementsByClassName(`Succes-${id}`)[0].style.display = "none";
+ }
+
+ const edit = () => {
+  document.getElementsByClassName(`Task-Text-${id}${text}`)[0].style.display = "none";
+  document.getElementById(id).style.display = "block";
+  document.getElementsByClassName(`Succes-${id}`)[0].style.display = "block";
+ }
+
 
  return (
   <li className="Tasks-Item"
@@ -27,22 +41,13 @@ const Task = ({ onToggle, onEdit, onDelete, completed, text, id, index }) => {
      className={`Succes Succes-${id}`}
      style={{ display: "none" }}
      color="success"
-     onClick={(e) => {
-      onEdit();
-      document.getElementsByClassName(`Task-Text-${id}${text}`)[0].style.display = "block";
-      document.getElementById(id).style.display = "none";
-      document.getElementsByClassName(`Succes-${id}`)[0].style.display = "none";
-     }}
+     onClick={submitEdit}
     >
      <FaCheck />
     </Button>
 
     <Button
-     onClick={(e) => {
-      document.getElementsByClassName(`Task-Text-${id}${text}`)[0].style.display = "none";
-      document.getElementById(id).style.display = "block";
-      document.getElementsByClassName(`Succes-${id}`)[0].style.display = "block";
-     }}
+     onClick={edit}
     >
      <FaPencilAlt />
     </Button>
